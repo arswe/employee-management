@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
-import { Fragment } from 'react'
-
 import { PersonStandingIcon } from 'lucide-react'
+import Link from 'next/link'
+import { Fragment } from 'react'
 
 const LandingPage = () => {
   return (
@@ -13,8 +13,13 @@ const LandingPage = () => {
         best dashboard for your personal customer support. <br />
       </p>
       <div className='flex gap-2 items-center'>
-        <Button> Login In</Button>
-        <Button variant={'outline'}> Sign Up</Button>
+        <Button asChild>
+          <Link href={'login'}>Login In</Link>
+        </Button>
+        <span>or</span>
+        <Button asChild variant={'outline'}>
+          <Link href={'sign-up'}>Sign Up</Link>
+        </Button>
       </div>
     </Fragment>
   )
