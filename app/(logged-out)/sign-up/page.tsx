@@ -49,6 +49,8 @@ const SignUpPage = () => {
     console.log('submitted')
   }
 
+  const accountType = form.watch('accountType')
+
   return (
     <>
       <PersonStandingIcon size={50} />
@@ -97,6 +99,24 @@ const SignUpPage = () => {
                   </FormItem>
                 )}
               />
+
+              {accountType === 'company' && (
+                <>
+                  <FormField
+                    control={form.control}
+                    name='companyName'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder='Company Name' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+              )}
 
               <Button type='submit'>Sign Up</Button>
             </form>
