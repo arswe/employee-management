@@ -12,7 +12,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -27,13 +26,14 @@ import { z } from 'zod'
 
 const formSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(6),
+  accountType: z.enum(['personal', 'company']),
+  companyName: z.string().optional(),
 })
 
 const SignUpPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { email: '', password: '' },
+    defaultValues: { email: '' },
   })
 
   const handleSubmit = () => {
@@ -60,26 +60,11 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input placeholder='your@example.com' {...field} />
                     </FormControl>
-                    <FormDescription>
-                      This is the email address you signed up to SupportMe with
-                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name='password'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input placeholder='••••••••' {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+
               <Button type='submit'>Sign Up</Button>
             </form>
           </Form>
