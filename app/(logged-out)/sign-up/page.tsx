@@ -28,6 +28,7 @@ const formSchema = z.object({
   email: z.string().email(),
   accountType: z.enum(['personal', 'company']),
   companyName: z.string().optional(),
+  numberOfEmployees: z.coerce.number().optional(),
 })
 
 const SignUpPage = () => {
