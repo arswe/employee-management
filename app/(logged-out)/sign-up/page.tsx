@@ -30,7 +30,7 @@ const formSchema = z.object({
   password: z.string().min(6),
 })
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { email: '', password: '' },
@@ -45,8 +45,8 @@ const LoginPage = () => {
       <PersonStandingIcon size={50} />
       <Card className='w-full max-w-sm'>
         <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>Login to your Support Me account</CardDescription>
+          <CardTitle>Sign Up</CardTitle>
+          <CardDescription>Sign Up for a new Support Me account</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -80,14 +80,14 @@ const LoginPage = () => {
                   </FormItem>
                 )}
               />
-              <Button type='submit'>Login</Button>
+              <Button type='submit'>Sign Up</Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter className='flex justify-between'>
-          <small> Do not have an account?</small>
+          <small> Already have an account?</small>
           <Button asChild variant='outline' size='sm'>
-            <Link href='/sign-Up'>Sign Up</Link>
+            <Link href='/login'>Login</Link>
           </Button>
         </CardFooter>
       </Card>
@@ -95,4 +95,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignUpPage
