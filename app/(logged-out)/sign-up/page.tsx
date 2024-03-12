@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -20,6 +21,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { PasswordInput } from '@/components/ui/password-input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import {
   Select,
@@ -42,6 +44,7 @@ const formSchema = z
     accountType: z.enum(['personal', 'company']),
     companyName: z.string().optional(),
     numberOfEmployees: z.coerce.number().optional(),
+    acceptTerms: z.boolean(),
     dob: z.date().refine((date) => {
       const today = new Date()
       const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
@@ -230,7 +233,7 @@ const SignUpPage = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type='password' placeholder='Password' {...field} />
+                      <PasswordInput type='password' placeholder='••••••••' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -244,8 +247,30 @@ const SignUpPage = () => {
                   <FormItem>
                     <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
-                      <Input type='password' placeholder='Confirm Password' {...field} />
+                      <PasswordInput type='password' placeholder='••••••••' {...field} />
                     </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='acceptTerms'
+                render={({ field }) => (
+                  <FormItem>
+                    <div className='flex gap-2 items-center'>
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <FormLabel>I accept the Terms and Conditions </FormLabel>
+                    </div>
+                    <FormDescription>
+                      By signing up, you agree to our{' '}
+                      <Link href='/terms' className='text-blue-500'>
+                        Terms and Conditions
+                      </Link>
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
