@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import * as React from 'react'
-import { DayPicker, useDayPicker } from 'react-day-picker'
+import { DayPicker, useDayPicker, useNavigation } from 'react-day-picker'
 
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -46,14 +46,16 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         day_disabled: 'text-muted-foreground opacity-50',
         day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
         day_hidden: 'invisible',
+        caption_dropdowns: 'flex space-x-2',
         ...classNames,
       }}
       components={{
         IconLeft: ({ ...props }) => <ChevronLeft className='h-4 w-4' />,
         IconRight: ({ ...props }) => <ChevronRight className='h-4 w-4' />,
         Dropdown: (dropdownProps) => {
-          const { fromYear, fromMonth, fromDate, toDate, toMonth, toYear } = useDayPicker()
+          const { currentMonth } = useNavigation()
 
+          const { fromYear, fromMonth, fromDate, toDate, toMonth, toYear } = useDayPicker()
           let selectValues: { value: string; label: string }[] = []
 
           if (dropdownProps.name === 'months') {
@@ -68,7 +70,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
             const latestYear = toYear || toMonth?.getFullYear() || toDate?.getFullYear()
 
             if (earLiestYear && latestYear) {
-              const yearsLength = latestYear - earLiestYear
+              const yearsLength = latestYear - earLiestYear + 1
 
               selectValues = Array.from({ length: yearsLength }, (_, i) => {
                 return {
@@ -76,15 +78,14 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
                   label: (earLiestYear + i).toString(),
                 }
               })
-              
             }
           }
 
-          console.log({ selectValues })
+          const caption = format(currentMonth, dropdownProps.name === 'months' ? 'MMM' : 'yyyy')
 
           return (
             <Select>
-              <SelectTrigger>Dropdown</SelectTrigger>
+              <SelectTrigger>{caption}</SelectTrigger>
               <SelectContent>
                 {selectValues.map((selectValue) => (
                   <SelectItem key={selectValue.value} value={selectValue.value}>
