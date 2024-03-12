@@ -30,6 +30,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { format } from 'date-fns'
 import { CalculatorIcon, PersonStandingIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
@@ -78,6 +79,9 @@ const SignUpPage = () => {
   }
 
   const accountType = form.watch('accountType')
+
+  const dobFromDate = new Date()
+  dobFromDate.setFullYear(dobFromDate.getFullYear() - 120)
 
   return (
     <>
@@ -173,18 +177,27 @@ const SignUpPage = () => {
                             variant={'outline'}
                             className='normal-case flex justify-between pr-1'
                           >
-                            <span>Pick a Date</span>
+                            {!!field.value ? format(field.value, 'PPP') : <span>Pick a Date</span>}
+
                             <CalculatorIcon size={20} />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent align='start'>
+                      <PopoverContent align='start' className='w-auto p-0'>
                         <Calendar
                           mode='single'
+                          defaultMonth={field.value}
                           selected={field.value}
                           onSelect={field.onChange}
-                          disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
+                          fixedWeeks
+                          weekStartsOn={5}
+                          fromMonth={dobFromDate}
+                          toDate={new Date()}
+                          disabled={(date) => {
+                            return date.getDay() === 4 || date.getDay() === 5
+                          }}
                           initialFocus
+                          captionLayout='dropdown-buttons'
                         />
                       </PopoverContent>
                     </Popover>
