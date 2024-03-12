@@ -87,7 +87,7 @@ const LoginPage = () => {
         <CardFooter className='flex justify-between'>
           <small> Do not have an account?</small>
           <Button asChild variant='outline' size='sm'>
-            <Link href='/sign-Up'>Sign Up</Link>
+            <Link href='/sign-up'>Sign Up</Link>
           </Button>
         </CardFooter>
       </Card>
