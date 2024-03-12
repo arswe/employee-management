@@ -32,12 +32,37 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-const formSchema = z.object({
-  email: z.string().email(),
-  accountType: z.enum(['personal', 'company']),
-  companyName: z.string().optional(),
-  numberOfEmployees: z.coerce.number().optional(),
-})
+const formSchema = z
+  .object({
+    email: z.string().email(),
+    accountType: z.enum(['personal', 'company']),
+    companyName: z.string().optional(),
+    numberOfEmployees: z.coerce.number().optional(),
+    dob: z.date().refine((date) => {
+      const today = new Date()
+      const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
+      return date <= eighteenYearsAgo
+    }, 'You must be 18 years or older'),
+  })
+  .superRefine((data, ctx) => {
+    if (data.accountType === 'company' && !data.companyName) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['companyName'],
+        message: 'Company Name is required',
+      })
+    }
+
+    if (data.accountType === 'company' && (!data.numberOfEmployees || data.numberOfEmployees < 1)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['numberOfEmployees'],
+        message: 'Number of Employees is required',
+      })
+    }
+
+    return {}
+  })
 
 const SignUpPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -123,7 +148,7 @@ const SignUpPage = () => {
                       <FormItem>
                         <FormLabel>Number of Employees</FormLabel>
                         <FormControl>
-                          <Input type='number' placeholder='0' {...field} />
+                          <Input type='number' min={0} placeholder='Employees' {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
