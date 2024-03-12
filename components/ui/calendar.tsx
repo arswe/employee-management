@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import * as React from 'react'
-import { DayPicker } from 'react-day-picker'
+import { DayPicker, useDayPicker } from 'react-day-picker'
 
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -52,7 +52,8 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         IconLeft: ({ ...props }) => <ChevronLeft className='h-4 w-4' />,
         IconRight: ({ ...props }) => <ChevronRight className='h-4 w-4' />,
         Dropdown: (dropdownProps) => {
-          console.log({ dropdownProps })
+          const { fromYear, fromMonth, fromDate, toDate, toMonth, toYear } = useDayPicker()
+
           let selectValues: { value: string; label: string }[] = []
 
           if (dropdownProps.name === 'months') {
@@ -62,6 +63,21 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
                 label: format(new Date(new Date().getFullYear(), i, 1), 'MMM'),
               }
             })
+          } else if (dropdownProps.name === 'years') {
+            const earLiestYear = fromYear || fromMonth?.getFullYear() || fromDate?.getFullYear()
+            const latestYear = toYear || toMonth?.getFullYear() || toDate?.getFullYear()
+
+            if (earLiestYear && latestYear) {
+              const yearsLength = latestYear - earLiestYear
+
+              selectValues = Array.from({ length: yearsLength }, (_, i) => {
+                return {
+                  value: (earLiestYear + i).toString(),
+                  label: (earLiestYear + i).toString(),
+                }
+              })
+              
+            }
           }
 
           console.log({ selectValues })
