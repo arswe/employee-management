@@ -115,6 +115,20 @@ const SignUpPage = () => {
                       </FormItem>
                     )}
                   />
+
+                  <FormField
+                    control={form.control}
+                    name='numberOfEmployees'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Number of Employees</FormLabel>
+                        <FormControl>
+                          <Input type='number' placeholder='0' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </>
               )}
 
