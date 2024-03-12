@@ -14,11 +14,11 @@ const LandingPage = () => {
       </p>
       <div className='flex gap-2 items-center'>
         <Button asChild>
-          <Link href={'login'}>Login In</Link>
+          <Link href='/login'>Login In</Link>
         </Button>
         <span>or</span>
         <Button asChild variant={'outline'}>
-          <Link href={'sign-up'}>Sign Up</Link>
+          <Link href='sign-up'>Sign Up</Link>
         </Button>
       </div>
     </Fragment>

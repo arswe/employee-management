@@ -16,7 +16,7 @@ const LightDarkToggle = ({ className }: Props) => {
         <TooltipTrigger
           className={className}
           onClick={() => {
-            setIsDarkMode((preValue) => !preValue)
+            setIsDarkMode((preValue) => !preValue )
             document.body.classList.toggle('dark')
           }}
         >
