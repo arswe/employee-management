@@ -47,8 +47,22 @@ const formSchema = z
       const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
       return date <= eighteenYearsAgo
     }, 'You must be at least 18 years old to sign up.'),
+    password: z
+      .string()
+      .min(8, 'Password must be at least 8 characters')
+      .refine((password) => {
+        return /^(?=.*[!@#$%^&*])(?=.*[A-Z]).*$/.test(password)
+      }, 'Password must contain at least one special character and one uppercase letter'),
+    confirmPassword: z.string(),
   })
   .superRefine((data, ctx) => {
+    if (data.password !== data.confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['confirmPassword'],
+        message: 'Passwords do not match',
+      })
+    }
     if (data.accountType === 'company' && !data.companyName) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -204,6 +218,34 @@ const SignUpPage = () => {
                     <FormDescription>
                       Your date of birth is used to calculate your age.
                     </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='password'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input type='password' placeholder='Password' {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='confirmPassword'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <FormControl>
+                      <Input type='password' placeholder='Confirm Password' {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
