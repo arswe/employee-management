@@ -78,7 +78,7 @@ const EmployeesState = () => {
             <Image src={me} alt='Employee of the months' />
             <AvatarFallback>AR</AvatarFallback>
           </Avatar>
-          <span className='text-2xl'>AbdurRahman</span>
+          <span className='text-2xl'>Abdur Rahman</span>
         </CardContent>
 
         <CardFooter>
