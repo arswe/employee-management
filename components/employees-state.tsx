@@ -1,59 +1,92 @@
-import { BadgeCheckIcon, UserCheck2Icon, UserIcon } from 'lucide-react'
+'use client'
+
+import me from '@/public/me.png'
+import { AvatarFallback } from '@radix-ui/react-avatar'
+import {
+  AlertTriangleIcon,
+  BadgeCheckIcon,
+  PartyPopperIcon,
+  UserCheck2Icon,
+  UserIcon,
+  UserRoundXIcon,
+} from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
+import { Avatar } from './ui/avatar'
 import { Button } from './ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 
 const EmployeesState = () => {
   const totalEmployees = 100
-  const employeesPresent = 80
-  const employeesOfTheMonth = (employeesPresent / totalEmployees) * 100
+  const employeesPresent = 85
+  const employeesPresentPercentage = (employeesPresent / totalEmployees) * 100
   return (
     <div className='grid lg:grid-cols-3 gap-4'>
       <Card className='border-green-300'>
-        <CardHeader>
+        <CardHeader className='pb-2'>
           <CardTitle className='text-base '>Total Employees</CardTitle>
-          <CardContent className='flex justify-between'>
-            <div className='flex gap-2'>
-              <UserIcon />
-              <div className='text-5xl'>100</div>
-            </div>
-            <div className='font-bold'>
-              <Button size='xs' asChild>
-                <Link href='/dashboard/employees'>View All</Link>
-              </Button>
-            </div>
-          </CardContent>
         </CardHeader>
+        <CardContent className='flex justify-between'>
+          <div className='flex gap-2'>
+            <UserIcon />
+            <div className='text-5xl'>100</div>
+          </div>
+          <div className='font-bold'>
+            <Button size='xs' asChild>
+              <Link href='/dashboard/employees'>View All</Link>
+            </Button>
+          </div>
+        </CardContent>
       </Card>
 
       <Card className='border-blue-300'>
-        <CardHeader>
+        <CardHeader className='pb-2'>
           <CardTitle className='text-base'>Employees Present</CardTitle>
-          <CardContent className='flex justify-between'>
-            <div className='flex gap-2'>
-              <UserCheck2Icon />
-              <div className='text-5xl'>80</div>
-            </div>
-          </CardContent>
-          <CardFooter>
+        </CardHeader>
+        <CardContent className='flex justify-between'>
+          <div className='flex gap-2'>
+            {employeesPresentPercentage > 75 ? (
+              <UserCheck2Icon className='text-green-500' />
+            ) : (
+              <UserRoundXIcon className='text-red-500' />
+            )}
+
+            <div className='text-5xl'>{employeesPresent}</div>
+          </div>
+        </CardContent>
+        <CardFooter>
+          {employeesPresentPercentage > 75 ? (
             <span className='text-xs text-green-500 flex gap-2 items-center'>
               <BadgeCheckIcon />
-              80% of employees are present
+              {employeesPresentPercentage}% of employees are present
             </span>
-          </CardFooter>
-        </CardHeader>
+          ) : (
+            <span className='text-xs text-red-500 flex gap-2 items-center'>
+              <AlertTriangleIcon />
+              Only {employeesPresentPercentage}% of employees are present
+            </span>
+          )}
+        </CardFooter>
       </Card>
 
-      <Card className='border-pink-300'>
-        <CardHeader>
+      <Card className='border-pink-300 flex flex-col'>
+        <CardHeader className='pb-2'>
           <CardTitle className='text-base'>Employees of the months</CardTitle>
-          <CardContent className='flex justify-between'>
-            <div className='flex gap-2'>
-              <UserIcon />
-              <div className='text-5xl'>80</div>
-            </div>
-          </CardContent>
         </CardHeader>
+        <CardContent className='flex gap-2 items-center'>
+          <Avatar>
+            <Image src={me} alt='Employee of the months' />
+            <AvatarFallback>AR</AvatarFallback>
+          </Avatar>
+          <span className='text-2xl'>AbdurRahman</span>
+        </CardContent>
+
+        <CardFooter>
+          <span className=' flex gap-2 items-center text-xs text-muted-foreground mt-auto'>
+            <PartyPopperIcon className='text-pink-400' />
+            Congrats on being the employee of the month
+          </span>
+        </CardFooter>
       </Card>
     </div>
   )
