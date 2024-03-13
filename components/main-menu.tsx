@@ -14,9 +14,9 @@ const MainMenu = () => {
       <div className='py-4 grow'>
         <MenuItem href='/dashboard'>My Dashboard</MenuItem>
         <MenuItem href='/dashboard/teams'>Teams</MenuItem>
-        <MenuItem href='/dashboard/employees'>employees</MenuItem>
-        <MenuItem href='/dashboard/account'>account</MenuItem>
-        <MenuItem href='/dashboard/settings'>settings</MenuItem>
+        <MenuItem href='/dashboard/employees'>Employees</MenuItem>
+        <MenuItem href='/dashboard/account'>Account</MenuItem>
+        <MenuItem href='/dashboard/settings'>Settings</MenuItem>
       </div>
 
       <div className='flex gap-2 items-center'>
