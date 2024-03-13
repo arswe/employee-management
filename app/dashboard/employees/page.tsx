@@ -1,5 +1,5 @@
-const EmployeePage = () => {
+const EmployeesPage = () => {
   return <div>EmployeePage</div>
 }
 
-export default EmployeePage
+export default EmployeesPage
