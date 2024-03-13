@@ -11,13 +11,13 @@ const MainMenu = () => {
         <MenuTitle />
       </header>
 
-      <div className='py-4 grow'>
+      <ul className='py-4 grow'>
         <MenuItem href='/dashboard'>My Dashboard</MenuItem>
         <MenuItem href='/dashboard/teams'>Teams</MenuItem>
         <MenuItem href='/dashboard/employees'>Employees</MenuItem>
         <MenuItem href='/dashboard/account'>Account</MenuItem>
         <MenuItem href='/dashboard/settings'>Settings</MenuItem>
-      </div>
+      </ul>
 
       <footer className='flex gap-2 items-center'>
         <Avatar>
