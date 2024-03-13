@@ -4,6 +4,9 @@ import { Button } from './ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 
 const EmployeesState = () => {
+  const totalEmployees = 100
+  const employeesPresent = 80
+  const employeesOfTheMonth = (employeesPresent / totalEmployees) * 100
   return (
     <div className='grid lg:grid-cols-3 gap-4'>
       <Card className='border-green-300'>
