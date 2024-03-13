@@ -1,7 +1,7 @@
-import { UserCheck2Icon, UserIcon } from 'lucide-react'
+import { BadgeCheckIcon, UserCheck2Icon, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 
 const EmployeesState = () => {
   return (
@@ -31,12 +31,13 @@ const EmployeesState = () => {
               <UserCheck2Icon />
               <div className='text-5xl'>80</div>
             </div>
-            <div className='font-bold'>
-              <Button size='xs' asChild>
-                <Link href='/dashboard/employees'>View All</Link>
-              </Button>
-            </div>
           </CardContent>
+          <CardFooter>
+            <span className='text-xs text-green-500 flex gap-2 items-center'>
+              <BadgeCheckIcon />
+              80% of employees are present
+            </span>
+          </CardFooter>
         </CardHeader>
       </Card>
 
@@ -47,11 +48,6 @@ const EmployeesState = () => {
             <div className='flex gap-2'>
               <UserIcon />
               <div className='text-5xl'>80</div>
-            </div>
-            <div className='font-bold'>
-              <Button size='xs' asChild>
-                <Link href='/dashboard/employees'>View All</Link>
-              </Button>
             </div>
           </CardContent>
         </CardHeader>
