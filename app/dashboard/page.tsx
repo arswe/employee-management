@@ -1,4 +1,4 @@
-import EmployeesState from '@/components/employees-state'
+import EmployeesState from '@/components/employees/employees-state'
 import TeamsState from '@/components/teams-state'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 

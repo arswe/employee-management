@@ -13,9 +13,9 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Avatar } from './ui/avatar'
-import { Button } from './ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
+import { Avatar } from '../ui/avatar'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card'
 
 const EmployeesState = () => {
   const totalEmployees = 100
