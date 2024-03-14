@@ -1,62 +1,62 @@
-const data = [
+export const data = [
   {
-    name: "Jan",
+    name: 'Jan',
     office: 82,
     wfh: 44,
   },
   {
-    name: "Feb",
+    name: 'Feb',
     office: 80,
     wfh: 40,
   },
   {
-    name: "Mar",
+    name: 'Mar',
     office: 83,
     wfh: 42,
   },
   {
-    name: "Apr",
+    name: 'Apr',
     office: 50,
     wfh: 50,
   },
   {
-    name: "May",
+    name: 'May',
     office: 40,
     wfh: 60,
   },
   {
-    name: "Jun",
+    name: 'Jun',
     office: 60,
     wfh: 40,
   },
   {
-    name: "Jul",
+    name: 'Jul',
     office: 55,
     wfh: 55,
   },
   {
-    name: "Aug",
+    name: 'Aug',
     office: 49,
     wfh: 61,
   },
   {
-    name: "Sep",
+    name: 'Sep',
     office: 44,
     wfh: 70,
   },
   {
-    name: "Oct",
+    name: 'Oct',
     office: 40,
     wfh: 40,
   },
   {
-    name: "Nov",
+    name: 'Nov',
     office: 50,
     wfh: 50,
   },
   {
-    name: "Dec",
+    name: 'Dec',
     office: 50,
     wfh: 50,
   },
-];
+]
