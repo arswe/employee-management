@@ -1,7 +1,7 @@
 'use client'
 
 import { teamLeaders } from '@/data/teamLeaders'
-import { ListChecksIcon, StarIcon, UsersIcon } from 'lucide-react'
+import { ListChecksIcon, PieChart, StarIcon, UsersIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Avatar, AvatarFallback } from '../ui/avatar'
@@ -13,6 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../ui/tooltip'
+import TeamDistributionChart from './team-distribution-chart'
 
 const TeamsState = () => {
   return (
@@ -71,11 +72,14 @@ const TeamsState = () => {
 
         <Card className='border-pink-300 flex flex-col'>
           <CardHeader className='pb-2'>
-            <CardTitle className='text-base'>
-              Team Distribution Overview
+            <CardTitle className='text-base flex justify-between items-center'>
+              <span> Team Distribution Overview</span>
+              <PieChart />
             </CardTitle>
           </CardHeader>
-          <CardContent className='flex gap-2 items-center'></CardContent>
+          <CardContent className='flex gap-2 items-center'>
+            <TeamDistributionChart />
+          </CardContent>
         </Card>
       </div>
       <div className='my-4'>
