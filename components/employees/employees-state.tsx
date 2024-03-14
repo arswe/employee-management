@@ -16,6 +16,7 @@ import Link from 'next/link'
 import { Avatar } from '../ui/avatar'
 import { Button } from '../ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card'
+import WordLocationTrends from './word-location-trends'
 
 const EmployeesState = () => {
   const totalEmployees = 100
@@ -101,6 +102,9 @@ const EmployeesState = () => {
               </span>
             </CardTitle>
           </CardHeader>
+          <CardContent>
+            <WordLocationTrends />
+          </CardContent>
         </Card>
       </div>
     </>
