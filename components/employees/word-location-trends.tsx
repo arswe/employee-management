@@ -1,7 +1,8 @@
+import { data } from '@/data/data'
+
 import {
   Bar,
   BarChart,
-  CartesianGrid,
   Legend,
   ResponsiveContainer,
   Tooltip,
@@ -16,8 +17,7 @@ const WordLocationTrends = () => {
         data={data}
         className='[&_.recharts-tooltip-cursor]:fill-zinc-200 dark:[&_.recharts-tooltip-cursor]:fill-zinc-800'
       >
-        <CartesianGrid strokeDasharray='4 4' />
-        <XAxis dataKey='name' stroke='#888888' />
+        <XAxis dataKey={'name'} stroke='#888888' />
         <YAxis stroke='#888888' />
         <Tooltip
           separator=': '
@@ -32,6 +32,7 @@ const WordLocationTrends = () => {
           iconType='circle'
           formatter={(value) => {
             if (value === 'office') return 'Work form Office'
+
             if (value === 'wfh') return 'Work from Home'
           }}
         />
