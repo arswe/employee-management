@@ -34,12 +34,8 @@ const WordLocationTrends = () => {
         <Legend
           iconType='circle'
           formatter={(value) => {
-            if (value === 'office') {
-              return 'Work form Office'
-            }
-            if (value === 'wfh') {
-              return 'Work from Home'
-            }
+            if (value === 'office') return 'Work form Office'
+            if (value === 'wfh') return 'Work from Home'
           }}
         />
         <Bar dataKey='office' stackId={1} fill='#ec4899' />
