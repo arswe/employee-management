@@ -13,6 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../ui/tooltip'
+import SupportTicketsResolved from './support-tickets-resolved'
 import TeamDistributionChart from './team-distribution-chart'
 
 const TeamsState = () => {
@@ -92,7 +93,9 @@ const TeamsState = () => {
               </span>
             </CardTitle>
           </CardHeader>
-          <CardContent className='pl-0'>Line Graph</CardContent>
+          <CardContent className='pl-0'>
+            <SupportTicketsResolved />
+          </CardContent>
         </Card>
       </div>
     </>
