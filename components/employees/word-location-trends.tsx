@@ -1,8 +1,7 @@
-import { data } from '@/data/data'
-
 import {
   Bar,
   BarChart,
+  CartesianGrid,
   Legend,
   ResponsiveContainer,
   Tooltip,
@@ -17,7 +16,8 @@ const WordLocationTrends = () => {
         data={data}
         className='[&_.recharts-tooltip-cursor]:fill-zinc-200 dark:[&_.recharts-tooltip-cursor]:fill-zinc-800'
       >
-        <XAxis dataKey={'name'} stroke='#888888' />
+        <CartesianGrid strokeDasharray='4 4' />
+        <XAxis dataKey='name' stroke='#888888' />
         <YAxis stroke='#888888' />
         <Tooltip
           separator=': '
