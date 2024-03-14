@@ -25,7 +25,7 @@ const EmployeesState = () => {
   return (
     <>
       <div className='grid lg:grid-cols-3 gap-4'>
-        <Card className='border-green-300'>
+        <Card className='border-blue-300'>
           <CardHeader className='pb-2'>
             <CardTitle className='text-base '>Total Employees</CardTitle>
           </CardHeader>
@@ -42,7 +42,7 @@ const EmployeesState = () => {
           </CardContent>
         </Card>
 
-        <Card className='border-blue-300'>
+        <Card className='border-green-300'>
           <CardHeader className='pb-2'>
             <CardTitle className='text-base'>Employees Present</CardTitle>
           </CardHeader>
@@ -102,7 +102,7 @@ const EmployeesState = () => {
               </span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className='pl-0'>
             <WordLocationTrends />
           </CardContent>
         </Card>
