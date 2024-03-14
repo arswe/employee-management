@@ -11,7 +11,18 @@ const WordLocationTrends = () => {
       >
         <XAxis dataKey={'name'} stroke='#888888' />
         <YAxis stroke='#888888' />
-        <Tooltip separator=': ' wrapperClassName='dark:!bg-black rounded-md dark:!border-border' />
+        <Tooltip
+          separator=': '
+          formatter={(value, name) => {
+            if (name === 'wfh') {
+              return [value, 'Work from home']
+            } else if (name === 'office') {
+              return [value, 'Work from office']
+            }
+          }}
+          labelClassName='font-bold'
+          wrapperClassName='!text-sm dark:!bg-black rounded-md dark:!border-border'
+        />
         <Legend
           iconType='circle'
           formatter={(value) => {
