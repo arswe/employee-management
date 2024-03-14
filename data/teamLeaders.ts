@@ -11,31 +11,31 @@ export const teamLeaders = [
     lastName: 'Al Hasan',
   },
   {
-    firstName: 'sumon',
+    firstName: 'Sumon',
     lastName: 'Khan',
   },
   {
     firstName: 'Tina',
+    lastName: 'Akter',
+  },
+  {
+    firstName: 'Sumona',
     lastName: 'akter',
   },
   {
-    firstName: 'sumona',
-    lastName: 'akter',
-  },
-  {
-    firstName: 'tuni',
-    lastName: 'akter',
+    firstName: 'Tuni',
+    lastName: 'Akter',
   },
   {
     firstName: 'Amy',
-    lastName: 'hosnain',
+    lastName: 'Hosnain',
   },
   {
     firstName: 'Ryan',
     lastName: 'khan',
   },
   {
-    firstName: 'jamsed',
-    lastName: 'mojumder',
+    firstName: 'Jamsed',
+    lastName: 'Mojumder',
   },
 ]
