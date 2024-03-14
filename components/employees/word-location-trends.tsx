@@ -18,7 +18,7 @@ const WordLocationTrends = () => {
         data={data}
         className='[&_.recharts-tooltip-cursor]:fill-zinc-200 dark:[&_.recharts-tooltip-cursor]:fill-zinc-800'
       >
-        <CartesianGrid />
+        <CartesianGrid strokeDasharray='3' />
         <XAxis dataKey={'name'} stroke='#888888' />
         <YAxis stroke='#888888' />
         <Tooltip
