@@ -20,7 +20,7 @@ const SupportTicketsResolved = () => {
         />
         <XAxis fontSize={12} dataKey='name' stroke='#888888' />
         <YAxis fontSize={12} stroke='#888888' />
-        <CartesianGrid strokeDasharray='3' />
+        <CartesianGrid strokeDasharray='3 3' />
         <Line type='monotone' dataKey='delta' stroke='#84cc16' />
         <Line type='monotone' dataKey='alpha' stroke='#3b82f6' />
         <Line type='monotone' dataKey='canary' stroke='#f97316' />
