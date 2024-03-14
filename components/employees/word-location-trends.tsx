@@ -5,10 +5,13 @@ import { Bar, BarChart, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } fro
 const WordLocationTrends = () => {
   return (
     <ResponsiveContainer height={350} width={'100%'}>
-      <BarChart data={data} className='[&_.recharts-tooltip-cursor]:'>
+      <BarChart
+        data={data}
+        className='[&_.recharts-tooltip-cursor]:fill-zinc-200 dark:[&_.recharts-tooltip-cursor]:fill-zinc-800'
+      >
         <XAxis dataKey={'name'} stroke='#888888' />
         <YAxis stroke='#888888' />
-        <Tooltip wrapperClassName='dark:!bg-black rounded-md dark:!border-border' />
+        <Tooltip separator=': ' wrapperClassName='dark:!bg-black rounded-md dark:!border-border' />
         <Legend
           iconType='circle'
           formatter={(value) => {
