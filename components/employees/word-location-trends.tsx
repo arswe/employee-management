@@ -22,11 +22,8 @@ const WordLocationTrends = () => {
         <Tooltip
           separator=': '
           formatter={(value, name) => {
-            if (name === 'wfh') {
-              return [value, 'Work from home']
-            } else if (name === 'office') {
-              return [value, 'Work from office']
-            }
+            if (name === 'wfh') return [value, 'Work from home']
+            else if (name === 'office') return [value, 'Work from office']
           }}
           labelClassName='font-bold'
           wrapperClassName='!text-sm dark:!bg-black rounded-md dark:!border-border'
