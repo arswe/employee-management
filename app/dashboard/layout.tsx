@@ -1,4 +1,5 @@
 import MainMenu from '@/components/main-menu'
+import MenuTitle from '@/components/menu-title'
 import React from 'react'
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,7 +7,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     <div className='grid md:grid-cols-[250px_1fr] h-screen'>
       <MainMenu className='hidden md:flex' />
       <div className='p-4 block md:hidden sticky top-0 left-0 bg-background border-b border-border'>
-        mobile menu
+        <MenuTitle />
       </div>
 
       <div className='overflow-auto py-2 px-4'>
