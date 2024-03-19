@@ -1,12 +1,17 @@
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import MenuItem from './menu-item'
 import MenuTitle from './menu-title'
 import { Avatar, AvatarFallback } from './ui/avatar'
 import LightDarkToggle from './ui/light-dark-toggle'
 
-const MainMenu = () => {
+interface Props {
+  className?: string
+}
+
+const MainMenu = ({ className }: Props) => {
   return (
-    <nav className='bg-muted overflow-auto p-4 flex flex-col'>
+    <nav className={cn('bg-muted overflow-auto  p-4 flex flex-col', className)}>
       <header className='border-b dark:border-black border-b-zinc-50 pb-4'>
         <MenuTitle />
       </header>
@@ -21,7 +26,9 @@ const MainMenu = () => {
 
       <footer className='flex gap-2 items-center'>
         <Avatar>
-          <AvatarFallback className='bg-pink-300 dark:bg-pink-800'>TP</AvatarFallback>
+          <AvatarFallback className='bg-pink-300 dark:bg-pink-800'>
+            TP
+          </AvatarFallback>
         </Avatar>
         <Link href='/logout' className='hover:underline'>
           Logout
