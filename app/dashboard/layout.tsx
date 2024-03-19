@@ -9,15 +9,16 @@ import { MenuIcon } from 'lucide-react'
 import React from 'react'
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const isDesktop = useMediaQuery('(max-width: 768px)')
+  const isDesktop = useMediaQuery('(min-width: 768px)')
 
   return (
     <div className='grid md:grid-cols-[250px_1fr] h-screen'>
-      <MainMenu className='hidden md:flex' />
-      {!isDesktop && (
+      {isDesktop ? (
+        <MainMenu className='hidden md:flex' />
+      ) : (
         <div className='p-4 flex justify-between md:hidden sticky top-0 left-0 bg-background border-b border-border'>
           <MenuTitle />
-          <Drawer>
+          <Drawer direction='right'>
             <DrawerTrigger>
               <MenuIcon />
             </DrawerTrigger>
