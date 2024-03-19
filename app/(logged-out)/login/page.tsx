@@ -86,7 +86,9 @@ const LoginPage = () => {
                   </FormItem>
                 )}
               />
-              <Button type='submit'>Login</Button>
+              <Button type='submit'>
+                <Link href='/dashboard'>Login</Link>
+              </Button>
             </form>
           </Form>
         </CardContent>
