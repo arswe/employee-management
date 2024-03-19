@@ -1,10 +1,14 @@
 import MainMenu from '@/components/main-menu'
 import MenuTitle from '@/components/menu-title'
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MenuIcon } from 'lucide-react'
 import React from 'react'
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  
+  const isMobile = useMediaQuery('(max-width: 768px)')
+  
   return (
     <div className='grid md:grid-cols-[250px_1fr] h-screen'>
       <MainMenu className='hidden md:flex' />
