@@ -1,5 +1,8 @@
-const EmployeesPage = () => {
-  return <div>EmployeePage</div>
+import { setTimeout } from 'timers/promises'
+
+const EmployeesPage = async () => {
+  await setTimeout(5000)
+  return <div>page</div>
 }
 
 export default EmployeesPage
