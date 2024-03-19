@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { PersonStandingIcon } from 'lucide-react'
+import { Users2Icon } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -43,15 +43,20 @@ const LoginPage = () => {
 
   return (
     <>
-      <PersonStandingIcon size={50} />
+      <Users2Icon size={50} />
       <Card className='w-full max-w-sm'>
         <CardHeader>
           <CardTitle>Login</CardTitle>
-          <CardDescription>Login to your Support Me account</CardDescription>
+          <CardDescription>
+            Login to your Employee Management account
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form className='flex flex-col gap-4' onSubmit={form.handleSubmit(handleSubmit)}>
+            <form
+              className='flex flex-col gap-4'
+              onSubmit={form.handleSubmit(handleSubmit)}
+            >
               <FormField
                 control={form.control}
                 name='email'

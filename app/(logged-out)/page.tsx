@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { PersonStandingIcon } from 'lucide-react'
+import { Users2Icon } from 'lucide-react'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
@@ -7,7 +7,7 @@ const LandingPage = () => {
   return (
     <Fragment>
       <h1 className='flex gap-2 items-center'>
-        <PersonStandingIcon size={50} className='text-pink-400' /> Support me
+        <Users2Icon size={50} className='text-pink-400' /> Employee Management
       </h1>
       <p>
         best dashboard for your personal customer support. <br />

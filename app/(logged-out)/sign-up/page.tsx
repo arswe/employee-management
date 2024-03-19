@@ -22,7 +22,11 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import {
   Select,
   SelectContent,
@@ -33,7 +37,7 @@ import {
 } from '@/components/ui/select'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
-import { CalculatorIcon, PersonStandingIcon } from 'lucide-react'
+import { CalculatorIcon, Users2Icon } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -49,7 +53,11 @@ const formSchema = z
     }),
     dob: z.date().refine((date) => {
       const today = new Date()
-      const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
+      const eighteenYearsAgo = new Date(
+        today.getFullYear() - 18,
+        today.getMonth(),
+        today.getDate()
+      )
       return date <= eighteenYearsAgo
     }, 'You must be at least 18 years old to sign up.'),
     password: z
@@ -76,7 +84,10 @@ const formSchema = z
       })
     }
 
-    if (data.accountType === 'company' && (!data.numberOfEmployees || data.numberOfEmployees < 1)) {
+    if (
+      data.accountType === 'company' &&
+      (!data.numberOfEmployees || data.numberOfEmployees < 1)
+    ) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ['numberOfEmployees'],
@@ -104,15 +115,20 @@ const SignUpPage = () => {
 
   return (
     <>
-      <PersonStandingIcon size={50} />
+      <Users2Icon size={50} />
       <Card className='w-full max-w-sm'>
         <CardHeader>
           <CardTitle>Sign Up</CardTitle>
-          <CardDescription>Sign Up for a new Support Me account</CardDescription>
+          <CardDescription>
+            Sign Up for a new Employee Management account
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form className='flex flex-col gap-4' onSubmit={form.handleSubmit(handleSubmit)}>
+            <form
+              className='flex flex-col gap-4'
+              onSubmit={form.handleSubmit(handleSubmit)}
+            >
               <FormField
                 control={form.control}
                 name='email'
@@ -174,7 +190,12 @@ const SignUpPage = () => {
                       <FormItem>
                         <FormLabel>Number of Employees</FormLabel>
                         <FormControl>
-                          <Input type='number' min={0} placeholder='Employees' {...field} />
+                          <Input
+                            type='number'
+                            min={0}
+                            placeholder='Employees'
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -196,7 +217,11 @@ const SignUpPage = () => {
                             variant={'outline'}
                             className='normal-case flex justify-between pr-1'
                           >
-                            {!!field.value ? format(field.value, 'PPP') : <span>Pick a Date</span>}
+                            {!!field.value ? (
+                              format(field.value, 'PPP')
+                            ) : (
+                              <span>Pick a Date</span>
+                            )}
 
                             <CalculatorIcon size={20} />
                           </Button>
@@ -235,7 +260,11 @@ const SignUpPage = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <PasswordInput type='password' placeholder='••••••••' {...field} />
+                      <PasswordInput
+                        type='password'
+                        placeholder='••••••••'
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -249,7 +278,11 @@ const SignUpPage = () => {
                   <FormItem>
                     <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
-                      <PasswordInput type='password' placeholder='••••••••' {...field} />
+                      <PasswordInput
+                        type='password'
+                        placeholder='••••••••'
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -263,7 +296,10 @@ const SignUpPage = () => {
                   <FormItem>
                     <div className='flex gap-2 items-center'>
                       <FormControl>
-                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
                       </FormControl>
                       <FormLabel>I accept the Terms and Conditions </FormLabel>
                     </div>
