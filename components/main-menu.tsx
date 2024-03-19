@@ -11,7 +11,9 @@ interface Props {
 
 const MainMenu = ({ className }: Props) => {
   return (
-    <nav className={cn('bg-muted overflow-auto  p-4 flex flex-col', className)}>
+    <nav
+      className={cn('md:bg-muted overflow-auto  p-4 flex flex-col', className)}
+    >
       <header className='border-b dark:border-black border-b-zinc-50 pb-4'>
         <MenuTitle />
       </header>
