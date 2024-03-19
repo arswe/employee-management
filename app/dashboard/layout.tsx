@@ -6,9 +6,8 @@ import { MenuIcon } from 'lucide-react'
 import React from 'react'
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  
-  const isMobile = useMediaQuery('(max-width: 768px)')
-  
+  const isDesktop = useMediaQuery('(max-width: 768px)')
+
   return (
     <div className='grid md:grid-cols-[250px_1fr] h-screen'>
       <MainMenu className='hidden md:flex' />
