@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 
 const DrawerContext = React.createContext<{
   direction?: 'top' | 'right' | 'bottom' | 'left'
+  onClose?: () => void
 }>({})
 
 const Drawer = ({
