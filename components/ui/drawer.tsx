@@ -44,6 +44,7 @@ const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
 >(({ className, children, ...props }, ref) => {
+  const { direction } = React.useContext(DrawerContext)
   return (
     <DrawerPortal>
       <DrawerOverlay />
