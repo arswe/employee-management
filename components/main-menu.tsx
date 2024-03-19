@@ -14,7 +14,7 @@ const MainMenu = ({ className }: Props) => {
     <nav
       className={cn('md:bg-muted overflow-auto  p-4 flex flex-col', className)}
     >
-      <header className='border-b dark:border-black border-b-zinc-50 pb-4'>
+      <header className=' hidden md:block border-b dark:border-black border-b-zinc-50 pb-4'>
         <MenuTitle />
       </header>
 

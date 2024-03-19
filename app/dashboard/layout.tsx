@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   return (
-    <div className='grid md:grid-cols-[250px_1fr] h-screen'>
+    <div className='md:grid md:grid-cols-[250px_1fr] h-screen'>
       {isDesktop ? (
         <MainMenu className='hidden md:flex' />
       ) : (
